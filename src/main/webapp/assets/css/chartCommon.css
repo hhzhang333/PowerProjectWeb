@@ -1,0 +1,167 @@
+body {
+    background-color: whitesmoke;
+}
+
+#power-analysis {
+    float: right;
+    margin: 3px 2% 6px 0;
+    background-color: #39A6AC;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+}
+
+.chart-title {
+    height: 60px;
+    text-align: left;
+}
+
+.chart-title > div {
+    font-size: 24px;
+    margin-top: 11px;
+    font-weight: bold;
+}
+
+.chart-size {
+    height: 250px;
+    padding-bottom: 70px;
+}
+
+#chart-total-ele {
+    background-color: #26C3BB;
+}
+
+#chart-divide-ele {
+    background-color: #E66E4C;
+}
+
+#chart-total-kt {
+    background-color: #5CC8E3;
+}
+
+#chart-divide-kt {
+    background-color: #479EE4;
+}
+
+#chart-total-zm {
+    background-color: #FAAA35;
+}
+
+#chart-total-dt {
+    background-color: #5CC8E3;
+}
+
+.chart-container {
+    margin-top: 10px;
+}
+
+.chart-container-sub {
+    background-color: white;
+}
+
+.data-cho-p {
+    float: left;
+    margin: 10px;
+}
+
+.data-p {
+    float: right;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.footer {
+    margin-bottom: 60px;
+}
+
+.warn-font {
+    margin: 20px;
+    font-size: 25px;
+}
+
+.line-position {
+    top: -38px;
+    left: -2%;
+}
+
+.line-style {
+    border-bottom:2px inset;
+    width: 78%;
+}
+
+.warn-table-style {
+    width: 95%;
+    margin: 0 20px;
+}
+
+.img-position {
+    margin: 20% 0 0 30%;
+}
+
+.font-position {
+    margin: -143px 0 0 -4%;
+    font-size: 65px;
+    text-align: center;
+    color: white;
+}
+
+.label-position {
+    text-align: center;
+    font-size: 26px;
+    color: lightslategray;
+}
+
+#start_image {
+    background: url("../image/start.png");
+    background-size: cover;
+}
+
+#start_img {
+    background: url("../image/index.jpg");
+    background-size: cover;
+}
+
+#project_choose {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    right: 0;
+}
+
+#project_choose div {
+    font-size: 47px;
+    margin: 5px;
+}
+
+.start_shadow {
+    background-color: rgba(0,0,0,0.7);
+    color: white;;
+}
+
+.start_main {
+    font-size: 32px;
+    padding: 22px 17px;
+    border-right: 1px inset lightgray;
+}
+
+.header_pos {
+    float: left;
+    margin: 10px 5px 10px 40px;
+}
+
+.start_sub_title{
+    font-size: 21px;
+    color: #00b3ee;
+    padding: 10px 0;
+}
+
+.start_time {
+    float: right;
+    margin: 20px;
+    font-size: 66px;
+}
+
+.start_time_sub {
+    font-size: 25px;
+    margin: 57px 20px 0 -4px;
+}

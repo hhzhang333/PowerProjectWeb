@@ -1,0 +1,17 @@
+{
+  "name": "energy",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "warjiang <1096409085@qq.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

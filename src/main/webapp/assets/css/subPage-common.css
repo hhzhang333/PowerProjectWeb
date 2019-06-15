@@ -1,0 +1,88 @@
+/*TODO 测试*/
+html{
+	/*min-width: 1920px;*/
+}
+body{
+	font:12px/1.5 "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, 
+   FreeSans, Arimo, "Droid Sans","wenquanyi micro hei",
+  "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+  	background: #1c364c;
+}
+/*TODO 页头*/
+.subPage-header{
+	margin:20px 0 15px 60px;
+} 
+.subPage-header h1{
+	 margin-top:12px;
+	 margin-left:60px;
+	 float: left;
+	 font-size: 28px;
+	 color: #fff;
+}
+/*TODO 主要内容样式*/
+.subPage-main{
+	margin-left: 60px;background: #efefef;
+	/*TODO 测试*/
+	height:828px;
+}
+.subPage-main-left{
+	width:160px;height:100%;float:left;
+	background: #b5b5b5;
+	position: relative;
+}
+.subPage-main-itemList{
+	position: absolute;
+	left:-27px;top:27px;
+	width:180px;
+}
+.subPage-main-itemList>li{
+	margin-bottom:22px;height: 146px;
+	line-height:130px;text-align: center;
+	background-size:100% 100%;
+}
+.subPage-main-itemList>li.active{
+	width:276px;
+}
+.subPage-main-itemList>li>a{
+	font-size: 28px;color:#fff;	
+}
+.subPage-main-itemList>.check{
+	background: url(../image/subPage/item-bg1-l.png);
+}
+.subPage-main-itemList>.compare{
+	background: url(../image/subPage/item-bg2-l.png);
+}
+.subPage-main-itemList>.power{
+	background: url(../image/subPage/item-bg3-l.png);
+}
+.subPage-main-itemList>.data{
+	background: url(../image/subPage/item-bg4-l.png);
+}
+
+.subPage-main-itemList>.data2{
+	background: url(../image/subPage/item-bg3-l.png);
+}
+
+.subPage-main-itemList>.pic{
+	background: url(../image/subPage/item-bg4-l.png);
+}
+
+.subPage-main-itemList>.formula{
+	background: url(../image/subPage/item-bg1-l.png);
+}
+
+.subPage-main-itemList>.reporter{
+	background: url(../image/subPage/item-bg2-l.png);
+}
+
+.subPage-main-right{
+	/*width:1600px;*/width:88%;height:100%;float:left;
+	margin-left:10px;
+	border-left:2px solid #c7c7c7;
+}
+.subPage-showBox{
+	/*width:1544px;*/width: 96%;height:720px;margin-top:28px;margin-left:70px;background: url(../image/subPage/showBox-bg.png);
+}
+.subPage-showBox>h2{
+	text-align: center;color:#fff;font-size:28px;line-height: 82px;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.seu.power.dao.DevmessDao">
+    <select id="selectDevmessMax" resultType="cn.edu.seu.power.domain.Devmess">
+        select top 1 id, name, time, value from ljt
+        WHERE
+        name=#{name} and time BETWEEN #{startTime} and #{endTime} ORDER BY time desc
+    </select>
+
+    <select id="selectDevmessMin" resultType="cn.edu.seu.power.domain.Devmess">
+        select top 1 id, name, time, value from ljt
+        WHERE
+        name=#{name} and time BETWEEN #{startTime} and #{endTime} ORDER BY time ASC
+    </select>
+
+    <select id="selectDevmessByPages" resultType="cn.edu.seu.power.domain.Devmess">
+        SELECT top ${len} id, name, time, value, quality FROM ljt WHERE (id NOT IN (SELECT top ${pretotal} id FROM ljt ORDER BY id)) ORDER BY id
+    </select>
+
+    <update id="modifyDevmessById">
+        UPDATE ljt set name=#{name},value=#{value},time=#{time},quality=#{quality} WHERE id=#{id};
+    </update>
+
+    <select id="getDevmessTotalCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM ljt;
+    </select>
+
+    <select id="getDevmessFilteredCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM ljt ${sumSqlWhere}
+    </select>
+
+    <select id="getDevmessTimeFilteredCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM ljt WHERE time BETWEEN #{startTime} and #{endTime}
+    </select>
+
+    <select id="getDevmessByConditions" resultType="cn.edu.seu.power.domain.Devmess">
+        SELECT *  FROM (SELECT id,name,value,quality,time, ROW_NUMBER() OVER( ${orderSql} ) as row FROM (SELECT * FROM ljt ${sumSqlWhere}) a) b WHERE row >= #{start} AND row <![CDATA[<]]>  #{end}
+    </select>
+
+    <select id="getDevmessByTimeConditions" resultType="cn.edu.seu.power.domain.Devmess">
+        SELECT *  FROM (SELECT id,name,value,quality,time, ROW_NUMBER() OVER( ${orderSql} ) as row FROM (SELECT * FROM ljt WHERE time BETWEEN #{startTime} and #{endTime}) a) b WHERE row >= #{start} AND row <![CDATA[<]]>  #{end}
+    </select>
+
+    <select id="getLatestDevmessByDeviceId" resultType="cn.edu.seu.power.domain.Devmess">
+        SELECT id,name,value,time,quality FROM  ljt WHERE time = (SELECT TOP 1 time from power.dbo.ljt ORDER BY time DESC )  AND name LIKE '%'+#{deviceId}+'%'
+    </select>
+
+    <select id="getLatestDevmessByName" resultType="cn.edu.seu.power.domain.Devmess">
+        SELECT TOP 1 id,name,value,time,quality FROM  ljt WHERE name = #{name} ORDER BY time DESC
+    </select>
+
+    <insert id="addDevmessItem">
+        INSERT INTO ljt  VALUES (#{name}, #{value}, #{time}, #{quality})
+    </insert>
+</mapper>

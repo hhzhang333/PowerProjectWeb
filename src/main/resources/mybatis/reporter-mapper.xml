@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.seu.power.dao.ReporterDao">
+    <insert id="insertReporter">
+        INSERT into reporter(time, blockId, blockName, power, totalPower, lightSocket, aircondition, dfPower, special, lightAndSocket, corridorAndEmergency, outdoorLighting, acTail, hvapf, muau, eahu, fancoil, splitACU, elevator, waterpump, fanner, datacenter, laundry, kitchen, swimpool, gym, water, toiletWater, piplinegas, centralheating, centralcold, other, type, chstation, area)
+         VALUES
+         (#{time}, #{blockId}, #{blockName}, #{power}, #{totalPower}, #{lightSocket}, #{aircondition}, #{dfPower}, #{special}, #{lightAndSocket}, #{corridorAndEmergency}, #{outdoorLighting}, #{acTail}, #{hvapf}, #{muau}, #{eahu}, #{fancoil}, #{splitACU}, #{elevator}, #{waterpump}, #{fanner}, #{datacenter}, #{laundry}, #{kitchen}, #{swimpool}, #{gym}, #{water}, #{toiletWater}, #{piplinegas}, #{centralheating}, #{centralcold}, #{other}, #{type}, #{chstation}, #{area})
+    </insert>
+
+    <insert id="insertReporterByObj" parameterType="cn.edu.seu.power.domain.Reporter">
+        INSERT into reporter(time, blockId, blockName, power, totalPower, lightSocket, aircondition, dfPower, special, lightAndSocket, corridorAndEmergency, outdoorLighting, acTail, hvapf, muau, eahu, fancoil, splitACU, elevator, waterpump, fanner, datacenter, laundry, kitchen, swimpool, gym, water, toiletWater, piplinegas, centralheating, centralcold, other, type, chstation, area)
+        VALUES
+         (#{time}, #{blockId}, #{blockName}, #{power}, #{totalPower}, #{lightSocket}, #{aircondition}, #{dfPower}, #{special}, #{lightAndSocket}, #{corridorAndEmergency}, #{outdoorLighting}, #{acTail}, #{hvapf}, #{muau}, #{eahu}, #{fancoil}, #{splitACU}, #{elevator}, #{waterpump}, #{fanner}, #{datacenter}, #{laundry}, #{kitchen}, #{swimpool}, #{gym}, #{water}, #{toiletWater}, #{piplinegas}, #{centralheating}, #{centralcold}, #{other}, #{type}, #{chstation}, #{area})
+    </insert>
+
+    <select id="selectReporters" resultType="cn.edu.seu.power.domain.Reporter">
+      SELECT id, time, blockId, blockName, power, totalPower, lightSocket, aircondition, dfPower, special, lightAndSocket, corridorAndEmergency, outdoorLighting, acTail, hvapf, muau, eahu, fancoil, splitACU, elevator, waterpump, fanner, datacenter, laundry, kitchen, swimpool, gym, water, toiletWater, piplinegas, centralheating, centralcold, other, type, chstation, area
+      FROM reporter
+      WHERE type = #{type} and time BETWEEN #{start} and #{end} ORDER BY time ASC ;
+    </select>
+
+    <delete id="deleteAll">
+        delete from reporter where id > 0
+    </delete>
+</mapper>

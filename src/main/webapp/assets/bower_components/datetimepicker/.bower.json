@@ -1,0 +1,15 @@
+{
+  "name": "datetimepicker",
+  "homepage": "https://github.com/amazeui/datetimepicker",
+  "version": "2.3.10",
+  "_release": "2.3.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.3.10",
+    "commit": "1d24b52cf374b1aed37a01568afdc1b47eeacd34"
+  },
+  "_source": "git://github.com/amazeui/datetimepicker.git",
+  "_target": "^2.3.10",
+  "_originalSource": "amazeui/datetimepicker",
+  "_direct": true
+}

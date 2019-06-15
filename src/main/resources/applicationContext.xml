@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/util
+          http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+    <task:annotation-driven/>
+    <context:component-scan base-package="cn.edu.seu.power.service"/>
+    <util:properties id="appProp" location="classpath:app.properties"/>
+    <bean class="org.codehaus.jackson.map.ObjectMapper" id="mapper"/>
+    <bean id="devmessService" class="cn.edu.seu.power.service.DevmessService">
+        <property name="powerLabel">
+            <map>
+                <entry key="CT" value="电流变比"/>
+                <entry key="Hz" value="频率"/>
+                <entry key="Ia" value="A相电流"/>
+                <entry key="Ib" value="B相电流"/>
+                <entry key="Ic" value="C相电流"/>
+                <entry key="Kvarh" value="无功电能"/>
+                <entry key="Kwh" value="有功电能"/>
+                <entry key="PF" value="功率因素"/>
+                <entry key="Ps" value="有功功率"/>
+                <entry key="PT" value="电压变比"/>
+                <entry key="Qs" value="无功功率"/>
+                <entry key="Ss" value="视在功率"/>
+                <entry key="Ua" value="A相电压"/>
+                <entry key="Ub" value="B相电压"/>
+                <entry key="Uc" value="C相电压"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="jobTargetA" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="devmessService"/>
+        <property name="targetMethod" value="intervalTimeWorkPerMonth"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+    <bean id="triggersA" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobTargetA"/>
+        <property name="cronExpression" value="30 59 23 L * ?"/>
+    </bean>
+
+    <bean id="jobTargetB" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="devmessService"/>
+        <property name="targetMethod" value="intervalTimeWorkPerDay"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+    <bean id="triggersB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobTargetB"/>
+        <property name="cronExpression" value="0 59 23 * * ?"/>
+    </bean>
+
+    <bean id="jobTargetC" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="devmessService"/>
+        <property name="targetMethod" value="intervalTimeWorkPerHour"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+    <bean id="triggersC" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobTargetC"/>
+        <property name="cronExpression" value="30 58 */1 * * ?"/>
+    </bean>
+    <bean id="jobTargetD" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="devmessService"/>
+        <property name="targetMethod" value="intervalTimeWorkPerYear"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+    <bean id="triggersD" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobTargetD"/>
+        <property name="cronExpression" value="45 59 23 31 12 ?"/>
+    </bean>
+
+    <bean id="jobScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="triggersA"/>
+                <ref bean="triggersB"/>
+                <ref bean="triggersC"/>
+                <ref bean="triggersD"/>
+            </list>
+        </property>
+        <property name="autoStartup" value="true"/>
+    </bean>
+</beans>

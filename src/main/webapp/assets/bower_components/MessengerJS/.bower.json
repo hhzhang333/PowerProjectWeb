@@ -1,0 +1,14 @@
+{
+  "name": "MessengerJS",
+  "homepage": "https://github.com/warjiang/MessengerJS",
+  "_release": "77d49a12fd",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "77d49a12fd4bc2476b3f96499558a8894e14bf01"
+  },
+  "_source": "git://github.com/warjiang/MessengerJS.git",
+  "_target": "*",
+  "_originalSource": "warjiang/MessengerJS",
+  "_direct": true
+}
